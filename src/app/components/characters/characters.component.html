@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center align-items-center flex-column ms-2">
+  <h2>Listagem de personagens Rick and Morty</h2>
+
+    
+
+  <form>
+    <div class="input-group rounded mt-4 w-100 has-validation">
+      <input [(ngModel)]="filterChar" #textSearch="ngModel" name="filterChar" type="text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" required/>
+      <button class="input-group-text border-0" id="search-addon" (click)="searchChar(filterChar)">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </form>
+<button class="btn btn-dark mt-2" (click)="this.getChars()">Reset Filters</button>
+  <nav class="mt-4" *ngIf="info != null" aria-label="...">
+    <ul class="pagination d-flex flex-wrap">
+      <li *ngFor="let i of pages"><button class="btn btn-outline-dark mb-1 me-1" (click)="navPagination(i)">{{i}}</button></li>
+    </ul>
+  </nav>
+
+</div>
+
+
+  
+<div class="d-flex justify-content-around flex-wrap">
+  
+<div *ngFor="let char of characters" class="card mt-4" style="width: 18rem;">
+    <img class="card-img-top" [src]="char.image" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{char.name}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{char.gender}}</li>
+      <li class="list-group-item">{{char.species}}</li>
+      <li class="list-group-item">{{char.status}}</li>
+    </ul>
+  </div>
+</div>
